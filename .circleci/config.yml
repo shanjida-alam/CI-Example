@@ -19,14 +19,15 @@ jobs:
             curl -s "https://get.sdkman.io" | bash
             source "$HOME/.sdkman/bin/sdkman-init.sh"
 
-      # Install Java 17 via SDKMAN!
+      # Install Java 17 via SDKMAN! and set it as default
       - run:
           name: Install JDK 17
           command: |
             source "$HOME/.sdkman/bin/sdkman-init.sh"
             sdk install java 17.0.8-zulu
+            sdk use java 17.0.8-zulu  # Explicitly use Java 17
 
-      # Verify Java 17 is installed
+      # Verify Java 17 is set as the active version
       - run:
           name: Verify Java Version
           command: |
@@ -65,14 +66,15 @@ jobs:
             curl -s "https://get.sdkman.io" | bash
             source "$HOME/.sdkman/bin/sdkman-init.sh"
 
-      # Install Java 17 via SDKMAN!
+      # Install Java 17 via SDKMAN! and set it as default
       - run:
           name: Install JDK 17
           command: |
             source "$HOME/.sdkman/bin/sdkman-init.sh"
             sdk install java 17.0.8-zulu
+            sdk use java 17.0.8-zulu  # Explicitly use Java 17
 
-      # Verify Java 17 is installed
+      # Verify Java 17 is set as the active version
       - run:
           name: Verify Java Version
           command: |
