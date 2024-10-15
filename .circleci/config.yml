@@ -12,24 +12,26 @@ jobs:
     steps:
       - checkout
 
-      # Add missing GPG key for Google Cloud SDK (fix the error)
+      # Install SDKMAN!
       - run:
-          name: Add Google Cloud SDK Public GPG Key
+          name: Install SDKMAN
           command: |
-            sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys C0BA5CE6DC6315A3
-            sudo apt-get update
+            curl -s "https://get.sdkman.io" | bash
+            source "$HOME/.sdkman/bin/sdkman-init.sh"
 
-      # Install Java 17
+      # Install Java 17 via SDKMAN!
       - run:
           name: Install JDK 17
           command: |
-            sudo apt-get install openjdk-17-jdk -y
-            sudo update-alternatives --config java
+            source "$HOME/.sdkman/bin/sdkman-init.sh"
+            sdk install java 17.0.8-zulu
 
-      # Verify Java 17 installation
+      # Verify Java 17 is installed
       - run:
           name: Verify Java Version
-          command: java -version
+          command: |
+            source "$HOME/.sdkman/bin/sdkman-init.sh"
+            java -version
 
       # Set executable permission for gradlew
       - run:
@@ -56,24 +58,26 @@ jobs:
     steps:
       - checkout
 
-      # Add missing GPG key for Google Cloud SDK
+      # Install SDKMAN!
       - run:
-          name: Add Google Cloud SDK Public GPG Key
+          name: Install SDKMAN
           command: |
-            sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys C0BA5CE6DC6315A3
-            sudo apt-get update
+            curl -s "https://get.sdkman.io" | bash
+            source "$HOME/.sdkman/bin/sdkman-init.sh"
 
-      # Install Java 17
+      # Install Java 17 via SDKMAN!
       - run:
           name: Install JDK 17
           command: |
-            sudo apt-get install openjdk-17-jdk -y
-            sudo update-alternatives --config java
+            source "$HOME/.sdkman/bin/sdkman-init.sh"
+            sdk install java 17.0.8-zulu
 
-      # Verify Java 17 installation
+      # Verify Java 17 is installed
       - run:
           name: Verify Java Version
-          command: java -version
+          command: |
+            source "$HOME/.sdkman/bin/sdkman-init.sh"
+            java -version
 
       # Set executable permission for gradlew
       - run:
