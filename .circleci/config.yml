@@ -12,25 +12,31 @@ jobs:
     steps:
       - checkout
 
+      # Add missing GPG key for Google Cloud SDK (fix the error)
+      - run:
+          name: Add Google Cloud SDK Public GPG Key
+          command: |
+            sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys C0BA5CE6DC6315A3
+            sudo apt-get update
+
       # Install Java 17
       - run:
           name: Install JDK 17
           command: |
-            sudo apt-get update
             sudo apt-get install openjdk-17-jdk -y
             sudo update-alternatives --config java
 
-      # Verify Java 17 is installed
+      # Verify Java 17 installation
       - run:
           name: Verify Java Version
           command: java -version
 
-      # Set executable permissions for gradlew
+      # Set executable permission for gradlew
       - run:
           name: Set executable permission for gradlew
           command: chmod +x ./gradlew
 
-      # Download project dependencies
+      # Download dependencies
       - run:
           name: Download Dependencies
           command: ./gradlew dependencies
@@ -50,20 +56,26 @@ jobs:
     steps:
       - checkout
 
+      # Add missing GPG key for Google Cloud SDK
+      - run:
+          name: Add Google Cloud SDK Public GPG Key
+          command: |
+            sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys C0BA5CE6DC6315A3
+            sudo apt-get update
+
       # Install Java 17
       - run:
           name: Install JDK 17
           command: |
-            sudo apt-get update
             sudo apt-get install openjdk-17-jdk -y
             sudo update-alternatives --config java
 
-      # Verify Java 17 is installed
+      # Verify Java 17 installation
       - run:
           name: Verify Java Version
           command: java -version
 
-      # Set executable permissions for gradlew
+      # Set executable permission for gradlew
       - run:
           name: Set executable permission for gradlew
           command: chmod +x ./gradlew
