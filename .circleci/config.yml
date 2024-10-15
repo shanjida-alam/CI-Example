@@ -12,6 +12,9 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Set executable permission for gradlew
+          command: chmod +x ./gradlew
+      - run:
           name: Download Dependencies
           command: ./gradlew dependencies
       - run:
@@ -25,6 +28,9 @@ jobs:
     executor: android-executor
     steps:
       - checkout
+      - run:
+          name: Set executable permission for gradlew
+          command: chmod +x ./gradlew
       - run:
           name: Run Unit Tests
           command: ./gradlew testDebug
